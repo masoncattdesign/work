@@ -313,3 +313,25 @@ dl.contact dd { margin: 0; color: var(--ink-2); }
 /* A link that leaves this site says so before it is clicked. */
 .app-menu-pop a .out { margin-left: auto; font-size: 10px; color: var(--ink-3); line-height: 0; }
 .app-menu-pop a.on .out { color: var(--paper); opacity: .7; }
+
+/* --- Masthead ---------------------------------------------------------
+   The work page leads with a drawn band rather than the word "Work". Tiles
+   of different sizes on one baseline: many pieces, lined up in one place,
+   which is what the page is. Same flat tile language as the card thumbnails
+   below, so the masthead and the cards read as one hand.
+
+   The word is still the h1 for anything that is not looking at the page. */
+
+.masthead-mark { margin: 0; line-height: 0; }
+.masthead-mark svg { display: block; width: 100%; height: auto; }
+
+.sr {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* The eyebrow is a path rather than a label: broadest first, this page last.
+   Ancestors recede so the crumb reads as one line with an end, rather than
+   as several titles of equal weight. */
+.eyebrow { color: var(--ink-3); }
+.eyebrow b { color: var(--accent); font-weight: 500; }
