@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Updates — Mason Catt</title>
-<meta name="description" content="A running log of what changed across Expressive Assets and the work around it, written to be read by someone who was not in the room.">
+<meta name="description" content="A short work log, one entry per weekday, across Expressive Assets and everything around it.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23111214'/%3E%3Ctext x='12' y='16.5' font-family='monospace' font-size='9' font-weight='600' fill='white' text-anchor='middle'%3EMC%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,210 +30,178 @@
 
   <header class="masthead">
     <p class="eyebrow"><span>Windows Design Systems</span> · <span>Mason Catt Work</span> · <b>Updates</b></p>
-    <h1 class="masthead-mark">
-      <span class="sr">Updates</span>
-      <svg viewBox="0 -8 860 120" aria-hidden="true">
-        <g class="m-tile">
-          <g class="m-lift">
-            <rect class="m-seed" x="0" y="0" width="96" height="104" rx="14" fill="var(--p-accent)"/>
-            <circle cx="48" cy="52" r="20" fill="var(--paper)"/>
-          </g>
-        </g>
-        <g class="m-tile">
-          <g class="m-lift">
-            <rect x="108" y="38" width="64" height="66" rx="12" fill="var(--rule)"/>
-          </g>
-        </g>
-        <g class="m-tile">
-          <g class="m-lift">
-            <rect x="180" y="19" width="120" height="85" rx="14" fill="var(--rule)"/>
-            <g fill="var(--paper)">
-              <rect x="202" y="41" width="76" height="8" rx="4"/>
-              <rect x="202" y="55" width="76" height="8" rx="4"/>
-              <rect x="202" y="69" width="48" height="8" rx="4"/>
-            </g>
-          </g>
-        </g>
-        <g class="m-tile">
-          <g class="m-lift">
-            <rect x="308" y="60" width="72" height="44" rx="10" fill="var(--p-glyph)"/>
-          </g>
-        </g>
-        <g class="m-tile">
-          <g class="m-lift">
-            <rect x="388" y="0" width="150" height="104" rx="14" fill="var(--rule)"/>
-            <rect x="412" y="42" width="102" height="20" rx="10" fill="var(--paper)"/>
-          </g>
-        </g>
-        <g class="m-tile">
-          <g class="m-lift">
-            <rect x="546" y="47" width="88" height="57" rx="12" fill="var(--p-container)"/>
-          </g>
-        </g>
-        <g class="m-tile">
-          <g class="m-lift">
-            <rect x="642" y="69" width="56" height="35" rx="10" fill="var(--rule)"/>
-          </g>
-        </g>
-        <g class="m-tile">
-          <g class="m-lift">
-            <rect x="707.25" y="28.25" width="73.5" height="74.5" rx="12.5" fill="none" pointer-events="all" stroke="var(--p-badge)" stroke-width="2.5"/>
-            <rect x="729" y="51" width="30" height="30" rx="8" fill="var(--p-badge)"/>
-          </g>
-        </g>
-        <g class="m-tile">
-          <g class="m-lift">
-            <rect x="790" y="54" width="70" height="50" rx="12" fill="var(--rule)"/>
-          </g>
-        </g>
-      </svg>
-    </h1>
+    <h1>Updates</h1>
+    <div class="facts">
+      <span>One entry per weekday</span>
+      <span>Newest first</span>
+      <span><a href="index.html">All work</a></span>
+    </div>
   </header>
 
   <section>
-    <h2>The log</h2>
     <div class="log">
 
       <article class="entry">
         <div class="entry-when">
-          <span class="entry-date">3 September 2026</span>
-          <span class="entry-tag">Site</span>
+          <a class="entry-thumb" href="https://masoncattdesign.github.io/expressive-assets-library/index.html" target="_blank" rel="noopener" aria-label="Open the Gallery">
+            <svg viewBox="0 0 66 42" aria-hidden="true">
+              <rect x="8" y="24" width="8" height="8" rx="2.5" fill="var(--p-accent)"/>
+              <rect x="20" y="20" width="12" height="12" rx="3.5" fill="var(--p-accent)" opacity=".7"/>
+              <rect x="36" y="14" width="18" height="18" rx="5" fill="var(--p-accent)" opacity=".45"/>
+            </svg>
+          </a>
+          <span class="entry-date">Friday 4 September</span>
+          <span class="entry-tag">App Icons</span>
         </div>
         <div class="entry-body">
-          <h3>This moved to a site of its own</h3>
-          <p>The work page shipped inside the Expressive Assets site, sharing its URL, its brand
-          mark and its navigation bar. That made a view of everything read as one more page about
-          icons, and it could not grow past the library without the framing getting stranger.</p>
+          <h3>46 more app icons, and this time they are drawn at every size</h3>
           <ul>
-            <li>New home: <code>masoncattdesign.github.io/work</code>. The BentoOS prototype came
-            with it, since it is a standalone exploration rather than a library tool.</li>
-            <li>The library site links here from the right-hand slot in its own bar, and this site
-            links back out to the library's pages with the outbound links marked.</li>
+            <li>Imported 46 Windows app icons at 16, 24, 32 and 48. These are authored at each
+            size rather than scaled from one tile, so not one of them carries a
+            <code>generated</code> flag. App Icons is 78 assets now.</li>
+            <li>Four retired apps came in as <code>deprecated</code> rather than published, each
+            pointing at what replaces it. First time anything in the library has used that status.</li>
+            <li>27 frames on the board were skipped and each says why, so the next person does not
+            re-litigate it. Store nearly slipped through as a duplicate under a different slug.</li>
+          </ul>
+          <p class="entry-who">Library at <b>3,280 assets</b> and <b>15,470 drawings</b>.</p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-when">
+          <a class="entry-thumb" href="index.html" aria-label="Open the work page">
+            <svg viewBox="0 0 66 42" aria-hidden="true">
+              <rect x="12" y="8" width="26" height="26" rx="5" fill="var(--surface)" stroke="var(--rule)" stroke-width="1.5"/>
+              <rect x="17" y="14" width="16" height="4" rx="2" fill="var(--p-badge)"/>
+              <rect x="17" y="22" width="16" height="3" rx="1.5" fill="var(--rule)"/>
+              <path d="M42 21 H50" stroke="var(--p-badge)" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 2.5"/>
+              <rect x="52" y="15" width="6" height="12" rx="2" fill="var(--p-badge)"/>
+            </svg>
+          </a>
+          <span class="entry-date">Thursday 3 September</span>
+          <span class="entry-tag">Work site · Docs</span>
+        </div>
+        <div class="entry-body">
+          <h3>The work page got its own site, and the documents stopped remembering their numbers</h3>
+          <ul>
+            <li>Moved this site out of the Expressive Assets repo. Sharing that URL and navigation
+            made a view of everything read as one more page about icons.</li>
+            <li>About and the System Map now read their counts from <code>manifest.json</code>. They
+            were claiming 3,129 assets in 6 collections against a library holding 3,280 in 8, and one
+            tile read "0 published" directly below a paragraph saying everything is published.</li>
+            <li>Deleted the derived Outline and Filled from App Icons: 384 drawings, none of them
+            drawn. A full matrix filled by derivation claims something the artwork does not support.</li>
+          </ul>
+          <p class="entry-who">A stale count now fails CI rather than sitting there looking finished.</p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-when">
+          <a class="entry-thumb" href="https://masoncattdesign.github.io/expressive-assets-library/asset-anatomy.html" target="_blank" rel="noopener" aria-label="Open Asset Anatomy">
+            <svg viewBox="0 0 66 42" aria-hidden="true">
+              <rect x="15" y="6" width="30" height="30" rx="8" fill="var(--p-container-bg)" stroke="var(--p-container)" stroke-width="1.8"/>
+              <circle cx="28" cy="19" r="6.5" fill="var(--p-container)" opacity=".55"/>
+              <rect x="34" y="24" width="9" height="9" rx="2.5" fill="var(--p-glyph)"/>
+            </svg>
+          </a>
+          <span class="entry-date">Wednesday 2 September</span>
+          <span class="entry-tag">Anatomy · Tooling</span>
+        </div>
+        <div class="entry-body">
+          <h3>Asset Anatomy stops describing the artwork and starts showing it</h3>
+          <ul>
+            <li>The anatomy figures are generated from the real shipped SVG rather than redrawn, so
+            a figure cannot drift from the library it is documenting.</li>
+            <li>Renamed the badge part to emblem, because badge already means something else in
+            Windows and a vocabulary that fights the platform will lose.</li>
+            <li>Priced the naming decision against Bridge's own rule instead of guessing at it, and
+            wrote a probe for whether the REST API returns the plugin data the Figma round trip is
+            designed around. That assumption had never been tested.</li>
+            <li>Every product, app and third-party icon now has all six sizes.</li>
           </ul>
         </div>
       </article>
 
       <article class="entry">
         <div class="entry-when">
-          <span class="entry-date">2 September 2026</span>
-          <span class="entry-tag">Site</span>
+          <a class="entry-thumb" href="https://masoncattdesign.github.io/expressive-assets-library/about.html" target="_blank" rel="noopener" aria-label="Open About">
+            <svg viewBox="0 0 66 42" aria-hidden="true">
+              <rect x="14" y="12" width="22" height="26" rx="4" fill="var(--surface)" stroke="var(--rule)" stroke-width="1.4"/>
+              <rect x="20" y="8" width="22" height="26" rx="4" fill="var(--surface)" stroke="var(--rule)" stroke-width="1.4"/>
+              <rect x="26" y="4" width="22" height="26" rx="4" fill="var(--surface)" stroke="var(--p-badge)" stroke-width="1.8"/>
+              <rect x="31" y="10" width="12" height="4" rx="2" fill="var(--p-badge)"/>
+            </svg>
+          </a>
+          <span class="entry-date">Tuesday 1 September</span>
+          <span class="entry-tag">2.0 · Documents</span>
         </div>
         <div class="entry-body">
-          <h3>One page for everything, and the desktop prototype joins the set</h3>
-          <p>Everything was reachable only by knowing the right URL. There is now a
-          <a href="index.html">work page</a> covering every piece by focus level, with a map of how
-          they feed each other.</p>
+          <h3>Version 2.0, and the library gets documents to argue with</h3>
           <ul>
-            <li>The BentoOS icon personalization prototype is <a href="bentos.html">on the site</a>
-            rather than in a downloads folder, and appears in the page menu beside the Gallery and
-            the Customizer.</li>
-            <li>The Component Library and the Marketing Compendiums are listed and linked
-            straight through to their Figma files.</li>
-            <li>Windows Illustrations is on the board as the next thing to open.</li>
+            <li>Contract break: group entries carry an <code>id</code> and no longer map onto
+            <code>type</code>, and <code>placeholders</code> became <code>generated</code>. Anyone
+            reading <code>manifest.json</code> has to notice.</li>
+            <li>61 third-party brand marks and 32 Windows app tiles imported. M365 Illustrations
+            replaced: 28 at 160px out, 40 at 512px in.</li>
+            <li>File Icons became their own group and lost Filled. What shipped as Filled was
+            derived rather than drawn, and nothing upstream has one, so 799 drawings went.</li>
+            <li>About, System Map and Asset Anatomy landed as one set, and everything received is
+            published.</li>
           </ul>
-          <p class="entry-who">Send this page rather than a screenshot.</p>
+          <p class="entry-who">Aligned to Bridge, and the dark theme kept on purpose. Checking
+          artwork against both grounds is the job here, not a preference.</p>
         </div>
       </article>
 
       <article class="entry">
         <div class="entry-when">
-          <span class="entry-date">2 September 2026</span>
-          <span class="entry-tag">Tools</span>
+          <a class="entry-thumb" href="https://masoncattdesign.github.io/expressive-assets-library/index.html" target="_blank" rel="noopener" aria-label="Open the Gallery">
+            <svg viewBox="0 0 66 42" aria-hidden="true">
+              <g fill="var(--rule)">
+                <rect x="12" y="9" width="10" height="10" rx="3"/><rect x="40" y="9" width="10" height="10" rx="3"/>
+                <rect x="12" y="23" width="10" height="10" rx="3"/>
+              </g>
+              <g fill="var(--p-accent)">
+                <rect x="26" y="9" width="10" height="10" rx="3"/>
+                <rect x="26" y="23" width="10" height="10" rx="3"/>
+                <rect x="40" y="23" width="10" height="10" rx="3"/>
+              </g>
+            </svg>
+          </a>
+          <span class="entry-date">Monday 31 August</span>
+          <span class="entry-tag">Library</span>
         </div>
         <div class="entry-body">
-          <h3>Two things the round trip depends on are now measurable</h3>
+          <h3>The product icons come from the Figma library, and the tools get their names</h3>
           <ul>
-            <li><code>npm run naming:report</code> measures every id against Bridge's naming rule and
-            prices both ways of conforming, so the decision has a number attached instead of a
-            feeling.</li>
-            <li><code>npm run figma:probe</code> checks whether the REST API actually returns the
-            shared plugin data the pull half of the round trip is designed around. That assumption
-            has never been tested, and everything else waits behind it.</li>
-            <li>A 15 second recording of the theming story is served from the site, so it can be
-            linked rather than attached.</li>
+            <li>Replaced the product icons with the real Figma library: 46 assets became 90.</li>
+            <li>M365 Illustrations added, with Outline and Filled derived and a recolor that
+            respects the brand palette rather than flattening it.</li>
+            <li>The browsing tool is Gallery and the styling tool is Customizer. Two tools with
+            plain names beat one tool with a clever one.</li>
           </ul>
-        </div>
-      </article>
-
-      <article class="entry">
-        <div class="entry-when">
-          <span class="entry-date">1 September 2026</span>
-          <span class="entry-tag">Library · 2.0</span>
-        </div>
-        <div class="entry-body">
-          <h3>Third party, app tiles, and a contract break</h3>
-          <p>This one changes <code>manifest.json</code> in a way a consumer has to notice. Group
-          entries carry an <code>id</code> and no longer map one to one onto <code>type</code>, and
-          the asset field <code>placeholders</code> became <code>generated</code> and widened to mark
-          any drawing produced here rather than received.</p>
-          <ul>
-            <li>61 third-party brand marks imported at 32px, not recolorable, every one attributed.</li>
-            <li>32 Windows app tiles imported into their own collection at 64px.</li>
-            <li>M365 Illustrations replaced: the 28 at 160px are gone, 40 new ones at 512px are in.</li>
-            <li>File Icons became a top-level group and lost Filled. What shipped as Filled was
-            derived rather than drawn and nothing upstream has one, so 799 drawings were deleted.</li>
-            <li>The library stands at 3,234 assets and 14,114 drawings, 980 of them flagged
-            <code>generated</code>.</li>
-          </ul>
-          <p class="entry-who"><b>Worth knowing:</b> published means the drawing is real, not that
-          its id is final. The naming grammar is still open and those ids will change.</p>
-        </div>
-      </article>
-
-      <article class="entry">
-        <div class="entry-when">
-          <span class="entry-date">1 September 2026</span>
-          <span class="entry-tag">Figma</span>
-        </div>
-        <div class="entry-body">
-          <h3>The sync plugin had never once run its layout pass</h3>
-          <p>A sync that created nothing also laid out nothing, so on a file that already had cards
-          the card layout silently did not run. It looked like a styling problem for three runs. The
-          plugin now runs in Node against a fake Figma, both shipped bugs were put back to confirm
-          the harness catches them, and <code>npm run test:plugin</code> is the gate before pressing
-          sync on a real file.</p>
-          <p class="entry-who">The plugin writes. Nothing reads back yet, and that is the next
-          substantial piece of work.</p>
-        </div>
-      </article>
-
-      <article class="entry">
-        <div class="entry-when">
-          <span class="entry-date">1 September 2026</span>
-          <span class="entry-tag">Tools · 1.2</span>
-        </div>
-        <div class="entry-body">
-          <h3>Aligned to Bridge, and the dark theme kept on purpose</h3>
-          <ul>
-            <li>Ink accent, pill controls, no shadows, Bridge's neutral ramp and type scale.</li>
-            <li>Dark stays, with an explicit control rather than a system guess. Checking artwork
-            against both grounds is the job here, not a preference.</li>
-            <li>The Product Icon matrix completed: 90 icons, three styles, six sizes, with the 180
-            generated cells recorded rather than hidden.</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="entry">
-        <div class="entry-when">
-          <span class="entry-date">25 to 31 August 2026</span>
-          <span class="entry-tag">Library · 1.0</span>
-        </div>
-        <div class="entry-body">
-          <h3>The first working library and the tools on top of it</h3>
-          <p>Schema, per-size artwork, and <code>manifest.json</code> as the only public contract.
-          90 Product Icons, 88 File Icons and 2,891 Fluent System Icons imported, plus the OOBE,
-          M365 and Product illustration sets. The Gallery and the first Customizer followed within
-          the week, which is the clearest evidence the contract is doing its job.</p>
         </div>
       </article>
 
     </div>
   </section>
 
+  <section>
+    <h2>What I need, and from whom</h2>
+    <ul class="open">
+      <li><span class="q">Carlo</span><span class="a">Whether the 512px M365 illustrations should get derived Outline and Filled. I will derive one first so we are not deciding in the abstract.</span></li>
+      <li><span class="q">Ada and Sihan</span><span class="a">Anatomy vocabulary: what the parts inside an icon are called, before the names harden into ids.</span></li>
+      <li><span class="q">Alex</span><span class="a">A risk read on the 61 third-party brand marks sitting on a public URL with no access control.</span></li>
+      <li><span class="q">Anyone</span><span class="a">The naming grammar. 2,698 ids break Bridge's scheme and it grows with every import.</span></li>
+    </ul>
+  </section>
+
   <div class="foot">
-    A summary. <code>CHANGELOG.md</code> is the release record and <code>git log</code> is the
-    detailed one. If something here reads as settled and you think it is not, say so.
+    One entry per weekday, written the day it happened. <code>CHANGELOG.md</code> is the release
+    record and <code>git log</code> is the detailed one. If something here reads as settled and you
+    think it is not, say so.
   </div>
 
 </div>
