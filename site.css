@@ -238,33 +238,41 @@ dl.contact dd { margin: 0; color: var(--ink-2); }
 
 .foot {
   border-top: 1px solid var(--rule); padding-top: 22px;
-  font-size: 13.5px; color: var(--ink-3); max-width: 68ch;
+  font-size: 13px; color: var(--ink-3);
 }
 
 /* --- Updates ----------------------------------------------------------
-   Grouped by date, newest first. The left rail carries the date so a scan
-   down the page is a scan down time rather than down headings. */
+   One full-width card per entry, set a step smaller than the body text. The
+   log is read by scanning rather than by reading through, so the date and the
+   tag sit on one line at the top of the card and the entry itself carries the
+   width. The previous layout spent a fixed 148px column on a date and gave
+   every entry the weight of a section. */
 
-.log { display: flex; flex-direction: column; }
+.log { display: flex; flex-direction: column; gap: 10px; }
+
 .entry {
-  display: grid; grid-template-columns: 148px 1fr; gap: 26px;
-  padding: 26px 0; border-top: 1px solid var(--rule);
+  border: 1px solid var(--rule); border-radius: 12px;
+  background: var(--surface);
+  padding: 13px 18px 15px;
 }
-.entry:first-child { border-top: 0; padding-top: 4px; }
-@media (max-width: 680px) { .entry { grid-template-columns: 1fr; gap: 10px; } }
-.entry-when { display: flex; flex-direction: column; gap: 6px; }
-.entry-date { font-family: var(--mono); font-size: 12px; color: var(--ink-2); white-space: nowrap; }
+.entry-when {
+  display: flex; align-items: center; gap: 9px; flex-wrap: wrap;
+  margin-bottom: 7px;
+}
+.entry-date { font-family: var(--mono); font-size: 11px; color: var(--ink-3); white-space: nowrap; }
 .entry-tag {
-  font-family: var(--mono); font-size: 10px; letter-spacing: .07em; text-transform: uppercase;
-  color: var(--ink-3); align-self: flex-start;
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--ink-3); background: var(--sunk); border: 1px solid var(--rule-soft);
+  border-radius: var(--pill); padding: 2px 8px; line-height: 1.5;
 }
-.entry-body { display: flex; flex-direction: column; gap: 10px; }
-.entry-body h3 { font-size: 17px; }
-.entry-body p { font-size: 15px; color: var(--ink-2); max-width: 66ch; }
-.entry-body ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 7px; }
-.entry-body li { font-size: 14.5px; color: var(--ink-2); max-width: 64ch; }
-.entry-who { font-size: 13.5px; color: var(--ink-3); }
+.entry-body { display: flex; flex-direction: column; gap: 7px; }
+.entry-body h3 { font-size: 14.5px; letter-spacing: -.005em; }
+.entry-body p { font-size: 13px; line-height: 1.55; color: var(--ink-2); max-width: 78ch; }
+.entry-body ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 5px; }
+.entry-body li { font-size: 12.75px; line-height: 1.5; color: var(--ink-2); max-width: 76ch; }
+.entry-who { font-size: 12px; color: var(--ink-3); }
 .entry-who b { color: var(--ink-2); font-weight: 500; }
+@media (max-width: 600px) { .entry { padding: 12px 14px 14px; } }
 
 /* --- Theme control and page menu -------------------------------------- */
 
@@ -324,6 +332,66 @@ dl.contact dd { margin: 0; color: var(--ink-2); }
 
 .masthead-mark { margin: 0; line-height: 0; }
 .masthead-mark svg { display: block; width: 100%; height: auto; }
+
+/* The band is the only thing on the site that moves. Tiles rise into place on
+   a stagger when the page opens, then drift a couple of user units on long
+   cycles that are deliberately not multiples of each other, so no two tiles
+   are ever in step and the motion never resolves into a pattern. The first
+   tile cycles slowly through the four project hues, which is the seed color
+   idea the library is built on, running at a speed you notice only if you
+   stay on the page.
+
+   The viewBox carries 8 units of air above and below the artwork. Without it
+   the full-height tile clips against the top of the SVG as it rises. */
+
+@keyframes mast-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes mast-drift-a {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-2.4px); }
+}
+@keyframes mast-drift-b {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(2.4px); }
+}
+/* Holds on each hue and moves between them quickly, rather than easing evenly
+   around the loop. An even loop spends most of its time on a color that is not
+   any of the four, which reads as a tint drifting rather than as the seed
+   changing. */
+@keyframes mast-seed {
+  0%,  21%  { fill: var(--p-accent); }
+  25%, 46%  { fill: var(--p-container); }
+  50%, 71%  { fill: var(--p-badge); }
+  75%, 96%  { fill: var(--p-glyph); }
+  100%      { fill: var(--p-accent); }
+}
+
+.masthead-mark .m-tile {
+  animation:
+    mast-in .8s cubic-bezier(.2, .75, .25, 1) backwards,
+    var(--drift) var(--dur) ease-in-out infinite;
+  animation-delay: calc(var(--i) * 80ms), calc(var(--i) * 80ms + 950ms);
+}
+.masthead-mark .m-tile:nth-child(odd)  { --drift: mast-drift-a; }
+.masthead-mark .m-tile:nth-child(even) { --drift: mast-drift-b; }
+.masthead-mark .m-tile:nth-child(1) { --i: 0; --dur: 11s; }
+.masthead-mark .m-tile:nth-child(2) { --i: 1; --dur: 14s; }
+.masthead-mark .m-tile:nth-child(3) { --i: 2; --dur: 9.5s; }
+.masthead-mark .m-tile:nth-child(4) { --i: 3; --dur: 13s; }
+.masthead-mark .m-tile:nth-child(5) { --i: 4; --dur: 10.5s; }
+.masthead-mark .m-tile:nth-child(6) { --i: 5; --dur: 15s; }
+.masthead-mark .m-tile:nth-child(7) { --i: 6; --dur: 12s; }
+.masthead-mark .m-tile:nth-child(8) { --i: 7; --dur: 16s; }
+.masthead-mark .m-tile:nth-child(9) { --i: 8; --dur: 10s; }
+
+.masthead-mark .m-seed { animation: mast-seed 24s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .masthead-mark .m-tile,
+  .masthead-mark .m-seed { animation: none; }
+}
 
 .sr {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
