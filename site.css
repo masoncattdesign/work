@@ -331,7 +331,11 @@ dl.contact dd { margin: 0; color: var(--ink-2); }
    The word is still the h1 for anything that is not looking at the page. */
 
 .masthead-mark { margin: 0; line-height: 0; }
-.masthead-mark svg { display: block; width: 100%; height: auto; }
+/* overflow is visible so a tile can lift and grow past the viewBox without
+   being cut off. The alternative is padding the viewBox out, which shrinks the
+   artwork against the column and pulls the band out of line with the eyebrow
+   and the headings below it. */
+.masthead-mark svg { display: block; width: 100%; height: auto; overflow: visible; }
 
 /* The band is the only thing on the site that moves. Tiles rise into place on
    a stagger when the page opens, then drift a couple of user units on long
@@ -388,9 +392,31 @@ dl.contact dd { margin: 0; color: var(--ink-2); }
 
 .masthead-mark .m-seed { animation: mast-seed 24s ease-in-out infinite; }
 
+/* Hover picks a tile up and quiets the rest of the band. The lift lives on an
+   inner group because the outer one is already spending its transform on the
+   drift, and two animations cannot share a property; nested, they compose and
+   a tile keeps breathing while it is raised.
+
+   Hover is keyed to :has() rather than to the svg, because the svg's box
+   includes the gaps between tiles and hovering a gap would otherwise dim the
+   whole band with nothing raised. Where :has() is missing the tile still
+   lifts and nothing else happens, which is the right thing to lose. */
+
+@media (hover: hover) {
+  .masthead-mark .m-lift {
+    transform-box: fill-box; transform-origin: 50% 50%;
+    transition: transform .28s cubic-bezier(.2, .8, .25, 1);
+  }
+  .masthead-mark .m-tile { transition: opacity .25s ease; }
+  .masthead-mark svg:has(.m-tile:hover) .m-tile:not(:hover) { opacity: .4; }
+  .masthead-mark .m-tile:hover .m-lift { transform: translateY(-4px) scale(1.05); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .masthead-mark .m-tile,
   .masthead-mark .m-seed { animation: none; }
+  .masthead-mark .m-lift { transition: none; }
+  .masthead-mark .m-tile:hover .m-lift { transform: none; }
 }
 
 .sr {
