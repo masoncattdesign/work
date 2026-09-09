@@ -447,6 +447,10 @@ dl.contact dd { margin: 0; color: var(--ink-2); }
 }
 @media (max-width: 780px) { .entry-main { grid-template-columns: 1fr; } }
 
+/* Days whose work lives in Figma rather than the repo have no screenshot to
+   show, so the body takes the full width instead of leaving a dead column. */
+.entry-main.no-shot { grid-template-columns: minmax(0, 1fr); }
+
 .entry-shot {
   display: block; border: 1px solid var(--rule); border-radius: 9px;
   background: var(--surface); overflow: hidden; line-height: 0;
