@@ -63,6 +63,7 @@ main{overflow:auto;padding:28px 32px 80px}
 .row .rad{width:16px;height:16px;border-radius:50%;border:1px solid rgba(255,255,255,.5);flex:none}.row.sel .rad{border:5px solid var(--accent)}
 .foot{display:flex;justify-content:flex-end;gap:8px}
 .desk-ctrl{display:flex;flex-direction:column;gap:12px;width:300px}
+.ctl-lab{color:var(--dim);font-size:12px;font-weight:600;margin-bottom:-4px}.desk-ctrl .seg{display:flex}.desk-ctrl .seg button{flex:1}.ctl-sep{height:1px;background:var(--line);margin:4px 0}
 .desk-ctrl .b{width:100%;padding:9px 12px;text-align:left}
 .hint{color:var(--dim);font-size:13px;line-height:1.5}
 .steps{display:flex;flex-direction:column;gap:6px;margin-top:6px}
@@ -116,8 +117,7 @@ body.still [class*="m-"]{animation:none!important}
 </style></head><body>
 <div class="app">
  <div class="top"><h1>Low memory · Visual explorations</h1><span class="sub">8 GB memory story · draft</span><span class="sp"></span>
-  <div class="seg" id="stateSeg"></div>
-  <div class="toggle on" id="motionT"><i></i>Motion</div></div>
+</div>
  <nav id="nav"></nav>
  <main id="main"></main>
 </div>
@@ -340,9 +340,8 @@ function fit(){const m=document.getElementById('main');if(!m)return;const avail=
 addEventListener('resize',fit);
 function render(){const f=fam();
  document.getElementById('nav').innerHTML=navHTML();
- document.getElementById('stateSeg').innerHTML=STATES.map((s,k)=>`<button data-s="${k}" class="${S.state===k?'on':''}">${s}</button>`).join('');
- document.getElementById('main').innerHTML=`<div class="intro"><div><h2>${f.name}</h2><p>${f.blurb}</p><p class="motion">Motion: ${f.motion}</p></div></div>
-  <div class="stage"><div id="deskHost">${deskHTML()}</div><div class="desk-ctrl"><button class="b p" data-act="play">▶ Play escalation</button><button class="b" data-act="reset">Reset dialog (Strained)</button><div class="hint">Pick an app and End task to watch the visual calm down. The dialog stays open past Busy and only settles once there is real room.</div>${stepsHTML()}</div></div>
+  document.getElementById('main').innerHTML=`<div class="intro"><div><h2>${f.name}</h2><p>${f.blurb}</p><p class="motion">Motion: ${f.motion}</p></div></div>
+  <div class="stage"><div id="deskHost">${deskHTML()}</div><div class="desk-ctrl"><div class="ctl-lab">State</div><div class="seg" id="stateSeg">${STATES.map((s,k)=>`<button data-s="${k}" class="${S.state===k?'on':''}">${s}</button>`).join('')}</div><div class="toggle ${S.motion?'on':''}" id="motionT"><i></i>Motion</div><div class="ctl-sep"></div><button class="b p" data-act="play">▶ Play escalation</button><button class="b" data-act="reset">Reset dialog (Strained)</button><div class="hint">Pick an app and End task to watch the visual calm down. The dialog stays open past Busy and only settles once there is real room.</div>${stepsHTML()}</div></div>
   ${sheetHTML()}`;fit();}
 function renderDesk(){const h=document.getElementById('deskHost');if(h)h.innerHTML=deskHTML();document.querySelector('.desk-ctrl .steps').outerHTML=stepsHTML();document.querySelectorAll('#stateSeg button').forEach(b=>b.classList.toggle('on',+b.dataset.s===S.state));}
 function clearT(){S.timers.forEach(clearTimeout);S.timers=[]}
@@ -365,5 +364,5 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-f],[data-s
 });
 try{const h=location.hash.slice(1);if(FAMILIES.some(f=>f.id===h))S.fam=h}catch(_){}
 if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){S.motion=false;document.body.classList.add('still');}
-resetDlg(0);render();if(!S.motion)document.getElementById('motionT').classList.remove('on');
+resetDlg(0);render();
 </script></body></html>
