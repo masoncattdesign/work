@@ -112,6 +112,8 @@ svg *{transform-box:view-box}
 .m-twinkle{animation:twinkle var(--dur) ease-in-out infinite;animation-delay:var(--d)}@keyframes twinkle{50%{opacity:.3}}
 .m-pulse{animation:pulse calc(var(--dur) * 1.5) ease-in-out infinite;animation-delay:var(--d)}@keyframes pulse{50%{opacity:.45}}
 .m-glow{animation:glow calc(var(--dur) * 1.2) ease-out infinite}@keyframes glow{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.7);opacity:0}}
+.r-static{display:none}body.still .r-static{display:inline}body.still .r-anim{display:none}
+@media (prefers-reduced-motion:reduce){.r-static{display:inline}.r-anim{display:none}}
 body.still [class*="m-"]{animation:none!important}
 @media (prefers-reduced-motion:reduce){[class*="m-"]{animation:none!important}}
 </style></head><body>
@@ -179,10 +181,13 @@ function dot(cx, cy, s0, i, anim, mini) {
 // ---------- Ripple ----------
 function ripple(cx, cy, w, h, i, anim) {
   const r0 = h * 0.095, gap = h * [0.06, 0.115, 0.22][i], maxR = Math.hypot(w, h) * 0.55; let s = '';
+  let st = '';
+  for (let r = r0 + gap * 0.8; r < maxR; r += gap) st += `<circle cx="${cx}" cy="${cy}" r="${f1(r)}" fill="none" stroke="${C[i]}" stroke-opacity="${f1(Math.max(0.08, 0.85 * (1 - (r - r0) / maxR)))}" stroke-width="${f1(Math.max(1.2, h * 0.014))}"/>`;
   if (anim) {
-    const n = Math.ceil((maxR - r0) / gap); const life = n * DUR[i] / 2;
-    for (let k = 0; k < n; k++) s += `<circle class="m-emit" style="transform-origin:${f1(cx)}px ${f1(cy)}px;--life:${f1(life)}s;--delay:-${f1(k * life / n)}s;--scale:${f1(maxR / r0)}" cx="${cx}" cy="${cy}" r="${f1(r0)}" fill="none" stroke="${C[i]}" stroke-width="${f1(Math.max(1.2, h * 0.014))}" vector-effect="non-scaling-stroke"/>`;
-  } else for (let r = r0 + gap * 0.8; r < maxR; r += gap) s += `<circle cx="${cx}" cy="${cy}" r="${f1(r)}" fill="none" stroke="${C[i]}" stroke-opacity="${f1(Math.max(0.08, 0.85 * (1 - (r - r0) / maxR)))}" stroke-width="${f1(Math.max(1.2, h * 0.014))}"/>`;
+    const n = Math.ceil((maxR - r0) / gap); const life = n * DUR[i] / 2; let a = '';
+    for (let k = 0; k < n; k++) a += `<circle class="m-emit" style="transform-origin:${f1(cx)}px ${f1(cy)}px;--life:${f1(life)}s;--delay:-${f1(k * life / n)}s;--scale:${f1(maxR / r0)}" cx="${cx}" cy="${cy}" r="${f1(r0)}" fill="none" stroke="${C[i]}" stroke-width="${f1(Math.max(1.2, h * 0.014))}" vector-effect="non-scaling-stroke"/>`;
+    s += `<g class="r-static">${st}</g><g class="r-anim">${a}</g>`;
+  } else s += st;
   return s + `<circle cx="${cx}" cy="${cy}" r="${f1(r0)}" fill="${C[i]}"/>`;
 }
 
@@ -298,7 +303,7 @@ const vars=i=>`style="--dur:${DUR[i]}s;--amp:${AMP[i]}"`;
 const sv=(w,h,inner,i)=>`<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" ${vars(i)} xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
 const fam=()=>FAMILIES.find(f=>f.id===S.fam);
 function navHTML(){const g=(t,ids)=>`<h4>${t}</h4>`+ids.map(id=>{const f=FAMILIES.find(x=>x.id===id);return `<button data-f="${id}" class="${S.fam===id?'on':''}"><span class="ic">${sv(24,24,mini(id,0,24),0)}</span>${f.name}</button>`}).join('');
- return g('Front-runners',['spider','gauge'])+g('More explorations',['dot','ripple','wave','pixel','window','gradient']);}
+ return g('Front-runners',['spider','gauge','ripple'])+g('More explorations',['dot','wave','pixel','window','gradient']);}
 function iconSVG(id){return (ICONS[id]||'').replace('<svg ','<svg width="16" height="16" ')}
 // ---- dialog ----
 function dialogHTML(i,interactive){const c=COPY[i];const apps=S.running.slice(0,3);
